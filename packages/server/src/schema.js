@@ -14,6 +14,12 @@ const typeDefs = gql`
     isBooked: Boolean!
   }
 
+  type LaunchPagination {
+    cursor: String!
+    hasMore: Boolean!
+    launches: [Launch]!
+  }
+
   type Mission {
     name: String
     missionPatch(size: PatchSize): String
@@ -26,7 +32,7 @@ const typeDefs = gql`
   }
 
   type Query {
-    launches: [Launch]!
+    launches(pageSize: Int, after: String): LaunchPagination!
     launch(id: ID!): Launch
     me: User
   }
