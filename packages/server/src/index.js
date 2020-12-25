@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 const { ApolloServer } = require('apollo-server')
 const isEmail = require('isemail')
 const { createStore } = require('./database')
@@ -25,7 +27,7 @@ const server = new ApolloServer({
   typeDefs
 })
 
-const PORT = 4000
+const PORT = process.env.PORT || 4000
 
 server.listen(PORT).then(() => {
   console.log(`🚀 Server is listening on port ${PORT}!`)

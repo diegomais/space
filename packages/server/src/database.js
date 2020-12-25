@@ -1,10 +1,10 @@
 const { Sequelize, DataTypes } = require('sequelize')
 
-const database = 'space'
-const host = 'localhost'
-const password = 'docker'
-const port = 5432
-const user = 'postgres'
+const database = process.env.DATABASE_NAME || 'space'
+const host = process.env.DATABASE_HOST || 'localhost'
+const password = process.env.DATABASE_PASSWORD || 'docker'
+const port = process.env.DATABASE_PORT || 5432
+const user = process.env.DATABASE_USER || 'postgres'
 
 module.exports.createStore = () => {
   const db = new Sequelize(database, user, password, {
