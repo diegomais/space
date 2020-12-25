@@ -1,0 +1,40 @@
+{
+  "name": "space",
+  "version": "1.0.0",
+  "description": "App for reserving a seat on an upcoming SpaceX launch.",
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "nodemon src/index.js",
+    "start": "node src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/diegomais/space.git"
+  },
+  "keywords": [
+    "space",
+    "graphql",
+    "apollo"
+  ],
+  "author": "Diego Mais <diegomais.dev@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/diegomais/space/issues"
+  },
+  "homepage": "https://github.com/diegomais/space#readme",
+  "dependencies": {
+    "apollo-server": "^2.19.1",
+    "graphql": "^15.4.0"
+  },
+  "devDependencies": {
+    "eslint": "^7.16.0",
+    "eslint-config-prettier": "^7.1.0",
+    "eslint-config-standard": "^16.0.2",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^3.3.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "nodemon": "^2.0.6",
+    "prettier": "^2.2.1"
+  }
+}
