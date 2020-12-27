@@ -1,9 +1,12 @@
-import { InMemoryCache, Reference } from '@apollo/client'
+import { InMemoryCache, makeVar, Reference } from '@apollo/client'
 
 export const cache: InMemoryCache = new InMemoryCache({
   typePolicies: {
     Query: {
       fields: {
+        cartItems: {
+          read: () => cartItemsVar()
+        },
         launches: {
           keyArgs: false,
           merge: (existing, incoming) => {
@@ -24,3 +27,5 @@ export const cache: InMemoryCache = new InMemoryCache({
     }
   }
 })
+
+export const cartItemsVar = makeVar<string[]>([])
