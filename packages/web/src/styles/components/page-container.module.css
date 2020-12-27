@@ -1,0 +1,16 @@
+.bar {
+  flex-shrink: 0;
+  height: 12px;
+  background-color: #220a82;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  max-width: 600px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 24px;
+  padding-bottom: 40px;
+}
