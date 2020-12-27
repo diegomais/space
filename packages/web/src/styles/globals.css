@@ -60,3 +60,30 @@ h5 {
   text-transform: uppercase;
   letter-spacing: 4px;
 }
+
+button {
+  display: block;
+  min-width: 200px;
+  height: 50px;
+  margin: 0 auto;
+  padding: 0 24px;
+  border: none;
+  border-radius: 25px;
+  font-family: inherit;
+  font-size: 18px;
+  line-height: 50px;
+  font-weight: 700;
+  color: white;
+  text-transform: uppercase;
+  background-color: var(--accent);
+  cursor: pointer;
+  outline: none;
+}
+
+button:hover {
+  background-color: #eb62be;
+}
+
+button:active {
+  background-color: #f18fd1;
+}
