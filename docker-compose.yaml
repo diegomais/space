@@ -1,0 +1,58 @@
+version: "3.9"
+
+services:
+  server:
+    build:
+      context: ./packages/server
+      dockerfile: Dockerfile
+    container_name: space_server
+    depends_on:
+      - postgres
+    ports:
+      - 3333:3333
+    restart: unless-stopped
+    volumes:
+      - ./packages/server/:/app/
+      - /app/node_modules/
+
+  web:
+    build:
+      context: ./packages/web
+      dockerfile: Dockerfile
+    container_name: space_web
+    ports:
+      - 3000:3000
+    restart: unless-stopped
+    # stdin_open: true
+    volumes:
+      - ./packages/web/:/app/
+      - /app/node_modules/
+
+  postgres:
+    container_name: space_postgres
+    environment:
+      POSTGRES_DB: space
+      POSTGRES_PASSWORD: secret
+      POSTGRES_USER: docker
+    image: postgres:13-alpine
+    ports:
+      - 5432:5432
+    restart: unless-stopped
+    tty: true
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  pgadmin:
+    container_name: space_pgadmin
+    depends_on:
+      - postgres
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=admin@user.com
+      - PGADMIN_DEFAULT_PASSWORD=123456
+    image: dpage/pgadmin4
+    ports:
+      - 8080:80
+    tty: true
+
+volumes:
+  postgres_data:
