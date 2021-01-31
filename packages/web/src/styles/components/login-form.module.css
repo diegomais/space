@@ -1,0 +1,74 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 1;
+  padding-bottom: 48px;
+  color: white;
+  background-color: #220a82;
+  background-image: url('../../../public/images/space.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.curve {
+  height: 100%;
+  width: 100%;
+  display: block;
+  fill: #220a82;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.form {
+  width: 100%;
+  max-width: 406px;
+  padding: 28px;
+  border-radius: 3px;
+  box-shadow: 6px 6px 1px rgba(0, 0, 0, 0.25);
+  color: #343c5a;
+  background-color: white;
+}
+
+.header {
+  display: block;
+  fill: currentColor;
+  width: 100%;
+  margin-bottom: 40px;
+  padding: 20px;
+  position: relative;
+}
+
+.heading {
+  margin: 24px 0 48px;
+}
+
+.input {
+  width: 100%;
+  margin-bottom: 16px;
+  padding: 10px 20px;
+  border: 1px solid #d8d9e0;
+  font-size: 16px;
+  outline: none;
+}
+
+.input:focus {
+  border-color: #220a82;
+}
+
+.logo {
+  display: block;
+  fill: currentColor;
+  display: block;
+  margin: 0 auto;
+  position: relative;
+  height: 56px;
+  width: 56px;
+}
+
+.rocket {
+  display: block;
+  fill: currentColor;
+  width: 250px;
+}
