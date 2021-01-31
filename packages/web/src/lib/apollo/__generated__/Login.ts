@@ -9,6 +9,7 @@
 
 export interface Login_login {
   __typename: "User";
+  email: string;
   id: string;
   token: string | null;
 }

@@ -1,13 +1,14 @@
 import { gql, useMutation } from '@apollo/client'
 import Router from 'next/router'
 import { LoginForm, Loading } from '../components'
-import { TOKEN, USER_ID } from '../constants/local-storage'
+import { TOKEN, USER_EMAIL, USER_ID } from '../constants/local-storage'
 import { isLoggedInVar } from '../lib/apollo/cache'
 import * as LoginTypes from '../lib/apollo/__generated__/Login'
 
 export const LOGIN_USER = gql`
   mutation Login($email: String!) {
     login(email: $email) {
+      email
       id
       token
     }
@@ -21,6 +22,7 @@ const Login: React.FC = () => {
     onCompleted({ login }) {
       if (login) {
         localStorage.setItem(TOKEN, login.token)
+        localStorage.setItem(USER_EMAIL, login.email)
         localStorage.setItem(USER_ID, login.id)
         isLoggedInVar(true)
         Router.push('/launches')
