@@ -1,7 +1,6 @@
+import Logo from '../assets/logo.svg'
 import styles from '../styles/components/loading.module.css'
 
-const Loading: React.FC = () => (
-  <img src="/logo.svg" alt="Logo" className={styles.logo} />
-)
+const Loading: React.FC = () => <Logo className={styles.logo} />
 
 export default Loading
