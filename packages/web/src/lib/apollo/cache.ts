@@ -1,4 +1,5 @@
 import { InMemoryCache, makeVar, Reference } from '@apollo/client'
+import { TOKEN } from '../../constants/local-storage'
 
 export const cache: InMemoryCache = new InMemoryCache({
   typePolicies: {
@@ -6,6 +7,9 @@ export const cache: InMemoryCache = new InMemoryCache({
       fields: {
         cartItems: {
           read: () => cartItemsVar()
+        },
+        isLoggedIn: {
+          read: () => isLoggedInVar()
         },
         launches: {
           keyArgs: false,
@@ -27,5 +31,9 @@ export const cache: InMemoryCache = new InMemoryCache({
     }
   }
 })
+
+export const isLoggedInVar = makeVar<boolean>(
+  process.browser ? !!localStorage.getItem(TOKEN) : false
+)
 
 export const cartItemsVar = makeVar<string[]>([])
