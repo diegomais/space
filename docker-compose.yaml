@@ -1,31 +1,33 @@
-version: "3.9"
+version: '3.8'
 
 services:
-  server:
+  backend:
     build:
-      context: ./packages/server
-      dockerfile: Dockerfile
-    container_name: space_server
+      context: ./backend
+    container_name: space_backend
     depends_on:
       - postgres
+    environment:
+      - APOLLO_KEY=service:SpaceX-83gisc:J8xmxkwbTwS7CTMsCiUsuA
+      - DATABASE_HOST=postgres
+      - DATABASE_NAME=space
+      - DATABASE_PASSWORD=secret
+      - DATABASE_PORT=5432
+      - DATABASE_USER=docker
     ports:
-      - 3333:3333
-    restart: unless-stopped
+      - 4000:4000
     volumes:
-      - ./packages/server/:/app/
+      - ./backend/:/app/
       - /app/node_modules/
 
-  web:
+  frontend:
     build:
-      context: ./packages/web
-      dockerfile: Dockerfile
-    container_name: space_web
+      context: ./frontend
+    container_name: space_frontend
     ports:
       - 3000:3000
-    restart: unless-stopped
-    # stdin_open: true
     volumes:
-      - ./packages/web/:/app/
+      - ./frontend/:/app/
       - /app/node_modules/
 
   postgres:
@@ -37,22 +39,3 @@ services:
     image: postgres:13-alpine
     ports:
       - 5432:5432
-    restart: unless-stopped
-    tty: true
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-
-  pgadmin:
-    container_name: space_pgadmin
-    depends_on:
-      - postgres
-    environment:
-      - PGADMIN_DEFAULT_EMAIL=admin@user.com
-      - PGADMIN_DEFAULT_PASSWORD=123456
-    image: dpage/pgadmin4
-    ports:
-      - 8080:80
-    tty: true
-
-volumes:
-  postgres_data:
